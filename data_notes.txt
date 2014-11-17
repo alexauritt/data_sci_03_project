@@ -1,0 +1,20 @@
+test files:
+body_acc_x_test.txt: 2947 x 128 (row by col)
+body_acc_y_test.txt: 2947 x 128 (row by col)
+... and all test Inertial Signals
+
+X_test.txt: 2947 x 561 (row by col)
+
+y_test.txt: 2947 x 1
+activity_id (1 - 6)
+subject_test.txt: 2947 x 1 
+subject_id (1 - 30)
+
+
+training files:
+body_acc_x_train.txt: 7352 x 128 (row by col)
+... and all training Intertial Samples
+
+X_train.txt: 7352 x 561 (row by col)
+y_train.txt: 7332 x 1
+subject_train.txt: 7332 x 1
