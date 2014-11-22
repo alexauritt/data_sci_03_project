@@ -1,3 +1,5 @@
+library('data.table')
+
 ####### step 1 - load and merge training and test data
 setwd("./UCI\ HAR\ Dataset/test")
 test_subject_ids <- read.table("subject_test.txt")
@@ -47,5 +49,11 @@ names(filteredData) <- filteredFeatureNames
 filteredData$subject_ids <- all_subject_ids
 filteredData$activity <- all_activities
 
-####### step 5 - create 2nd independant data set
+#convert to data table for faster processing
+dt <- as.data.table(filteredData)
 
+#calculate averages of all features grouped by subject, activity
+averages <- dt[,lapply(.SD,mean),by=list(subject_ids,activity)]
+
+
+####### step 5 - create 2nd independant data set
