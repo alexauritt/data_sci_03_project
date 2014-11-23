@@ -19,4 +19,17 @@ and a full desription of the data can be found here:
 
 <a>http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a>
 
-A hard copy of the dataset, unzipped, is included in this repository, under the 'UCI HAR Dataset' directory.
+##Cleaning Procedure
+
+<ol>
+	<li>
+		###Merge training and test sets to create one data set.
+		####Here is more info
+	</li>
+	<li>
+		###Extract the measurements on the mean and standard deviation for each measurement.
+		####And more still
+	</li> 
+	<li>Use descriptive activity names to name activities in data set.</li>
+	<li>Label data set with descriptive variable names.</li>
+	<li>From the data set in step 4, create a 2nd, independent tidy data set with average of each variable for each activity and each subject.</li>
