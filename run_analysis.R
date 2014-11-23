@@ -46,12 +46,15 @@ convertFeatureNames <- function(featureName) {
 	featureName <- sub('Acc', 'Accelerometer', featureName)
 	featureName <- sub('Mag', 'Magnitude', featureName)
 	featureName <- sub('Gyro', 'Gyroscope', featureName)
-	featureName <- sub('-mean\\(\\)', 'AverageMean', featureName)
-	featureName <- sub('-std\\(\\)', 'AverageStandardDeviation', featureName)
+	featureName <- sub('-mean\\(\\)', 'Mean', featureName)
+	featureName <- sub('-std\\(\\)', 'StandardDeviation', featureName)
+	featureName <- sub('-meanFreq\\(\\)', 'WeightedAverageOfFrequencyComponentsToObtainMeanFrequency', featureName)
 	featureName <- sub('-X', 'OnXAxis', featureName)
 	featureName <- sub('-Y', 'OnYAxis', featureName)
 	featureName <- sub('-Z', 'OnZAxis', featureName)
-	featureName
+	featureName <- sub('^t', 'TimeDomainSignal', featureName)
+	featureName <- sub('^f', 'FrequencyDomainSignal', featureName)
+	paste(featureName, 'Average', sep='')
 }
 
 filteredFeatureNames <- completeFeatureNames[filteredFeaturesColumnIndices]
