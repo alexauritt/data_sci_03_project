@@ -1,5 +1,12 @@
 library('data.table')
 
+convertFeatureNames <- function(featureName) {
+	featureName <- sub('Acc', 'Accelerometer', featureName)
+	featureName <- sub('Mag', 'Magnitude', featureName)
+	featureName <- sub('Gyro', 'Gyroscope', featureName)
+	featureName
+}
+
 ####### step 1 - load and merge training and test data
 setwd("./UCI\ HAR\ Dataset/test")
 test_subject_ids <- read.table("subject_test.txt")
@@ -43,7 +50,12 @@ all_activities <- factor(all_activities, labels=activity_labels)
 
 ####### step 4 - label the data set with descriptive variable names
 filteredFeatureNames <- completeFeatureNames[filteredFeaturesColumnIndices]
+filteredFeatureNames <- as.character(lapply(filteredFeatureNames, convertFeatureNames))
 names(filteredData) <- filteredFeatureNames
+
+# outputFile <- 'filteredFeatures.txt'
+# write.table(filteredFeatureNames, file=outputFile, row.names=FALSE, col.names=TRUE, sep=' ',quote=FALSE)
+
 
 #add subject id and activity columns
 filteredData$subject_ids <- all_subject_ids
