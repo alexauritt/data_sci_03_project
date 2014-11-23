@@ -54,7 +54,18 @@ convertFeatureNames <- function(featureName) {
 	featureName <- sub('-Z', 'OnZAxis', featureName)
 	featureName <- sub('^t', 'TimeDomainSignal', featureName)
 	featureName <- sub('^f', 'FrequencyDomainSignal', featureName)
-	paste(featureName, 'Average', sep='')
+
+	if (length(grep('angle', featureName))) {
+		featureName <- sub('angle\\(', 'AngleBetween', featureName)
+		featureName <- sub('gravity', 'Gravity', featureName)
+		featureName <- sub('\\,', 'And', featureName)
+		featureName <- sub('\\)', '', featureName)
+		featureName <- sub('\\)', '', featureName)
+		featureName <- paste('Average',featureName,sep='')
+	} else {
+		featureName <- paste(featureName, 'Average', sep='')
+	}
+	featureName
 }
 
 filteredFeatureNames <- completeFeatureNames[filteredFeaturesColumnIndices]
