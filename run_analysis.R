@@ -60,7 +60,7 @@ convertFeatureNames <- function(featureName) {
 		featureName <- sub('gravity', 'Gravity', featureName)
 		featureName <- sub('\\,', 'And', featureName)
 		featureName <- sub('\\)', '', featureName)
-		featureName <- sub('\\)', '', featureName)
+		featureName <- sub('\\)', '', featureName) # run twice for double hits
 		featureName <- paste('Average',featureName,sep='')
 	} else {
 		featureName <- paste(featureName, 'Average', sep='')
@@ -72,19 +72,15 @@ filteredFeatureNames <- completeFeatureNames[filteredFeaturesColumnIndices]
 filteredFeatureNames <- as.character(lapply(filteredFeatureNames, convertFeatureNames))
 names(filteredData) <- filteredFeatureNames
 
-outputFile <- 'filteredFeatures.txt'
-write.table(filteredFeatureNames, file=outputFile, row.names=FALSE, col.names=TRUE, sep=' ',quote=FALSE)
-
-
 #add subject id and activity columns
-filteredData$subject_ids <- all_subject_ids
-filteredData$activity <- all_activities
+filteredData$SubjectID <- all_subject_ids
+filteredData$Activity <- all_activities
 
 #convert to data table for faster processing
 dt <- as.data.table(filteredData)
 
 #calculate averages of all features grouped by subject, activity
-averages <- dt[,lapply(.SD,mean),by=list(subject_ids,activity)]
+averages <- dt[,lapply(.SD,mean),by=list(SubjectID,Activity)]
 
 outputFile <- 'clean_data.txt'
 write.table(averages, file=outputFile, row.names=FALSE, col.names=TRUE, sep=' ',quote=FALSE)
