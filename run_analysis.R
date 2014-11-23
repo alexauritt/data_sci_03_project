@@ -26,10 +26,10 @@ filteredFeaturesColumnIndices <- grepl("[Mm]ean|[Ss]td", completeFeatureNames)
 
 filteredData <- merged_data[,filteredFeaturesColumnIndices]
 
-
 ####### step 3 - use descriptive activity 
 
 activity_table <- read.table("activity_labels.txt")
+setwd('..')
 activity_labels <- as.character(activity_table$V2)
 
 # compose numeric vector of subject and activity values for combined test and training data. (10,299 x 1 vector)
@@ -54,6 +54,10 @@ dt <- as.data.table(filteredData)
 
 #calculate averages of all features grouped by subject, activity
 averages <- dt[,lapply(.SD,mean),by=list(subject_ids,activity)]
+
+outputFile <- 'clean_data.txt'
+write.table(averages, file=outputFile, row.names=FALSE, col.names=TRUE, sep=' ',quote=FALSE)
+
 
 
 ####### step 5 - create 2nd independant data set
