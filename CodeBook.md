@@ -1,6 +1,6 @@
-#CodeBook
+##Study Design
 
-##Data
+(Note: this text is a slight modification from the README which accompanies raw data)
 
 <p>The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, 3-axial linear acceleration and 3-axial angular velocity were captured at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually.</p>
 
@@ -10,7 +10,7 @@
 
 <p>The resultant tidy data set consists of a 180 x 88 matrix, where each row corresponds to a given observation of a single volunteer performing a single activity. The columns include the SubjectID (which identifies the volunteer), the Activity description, and then average of each of the 86 features.
 
-##Columns
+##Code Book
 
 ###SubjectID
 
