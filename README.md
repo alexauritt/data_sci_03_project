@@ -23,12 +23,15 @@ and a full desription of the data can be found here:
 
 <ol>
 	<li>
-		###Merge training and test sets to create one data set.
-		####Here is more info
+		Merge training and test sets to create one data set.
+		
+		Here is more info
 	</li>
+	##And more info here.
 	<li>
-		###Extract the measurements on the mean and standard deviation for each measurement.
-		####And more still
+		Extract the measurements on the mean and standard deviation for each measurement.
+		
+		And more still
 	</li> 
 	<li>Use descriptive activity names to name activities in data set.</li>
 	<li>Label data set with descriptive variable names.</li>
