@@ -14,12 +14,14 @@ train_data <- read.table("X_train.txt")
 merged_data <- rbind(test_data, train_data)
 
 setwd("..")
-
-
-
-####### step 2 - extract on the measurements on mean and std
-
 feature_list <- read.table("features.txt")
+
+activity_table <- read.table("activity_labels.txt")
+setwd('..')
+
+####### step 2 - extract only the measurements on mean and std
+
+
 completeFeatureNames <- as.character(feature_list$V2)
 filteredFeaturesColumnIndices <- grepl("[Mm]ean|[Ss]td", completeFeatureNames)
 
@@ -28,8 +30,6 @@ filteredData <- merged_data[,filteredFeaturesColumnIndices]
 
 ####### step 3 - use descriptive activity 
 
-activity_table <- read.table("activity_labels.txt")
-setwd('..')
 activity_labels <- as.character(activity_table$V2)
 
 # compose numeric vector of subject and activity values for combined test and training data. (10,299 x 1 vector)
@@ -72,6 +72,8 @@ filteredFeatureNames <- completeFeatureNames[filteredFeaturesColumnIndices]
 filteredFeatureNames <- as.character(lapply(filteredFeatureNames, convertFeatureNames))
 names(filteredData) <- filteredFeatureNames
 
+
+####### step 5 - create 2nd independant data set
 #add subject id and activity columns
 filteredData$SubjectID <- all_subject_ids
 filteredData$Activity <- all_activities
@@ -84,7 +86,3 @@ averages <- dt[,lapply(.SD,mean),by=list(SubjectID,Activity)]
 
 outputFile <- 'clean_data.txt'
 write.table(averages, file=outputFile, row.names=FALSE, col.names=TRUE, sep=' ',quote=FALSE)
-
-
-
-####### step 5 - create 2nd independant data set
