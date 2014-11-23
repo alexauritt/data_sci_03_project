@@ -1,3 +1,5 @@
+#CodeBook
+
 SubjectID
 	Integer (between 1 and 30)
 		30 different volunteers were measured. Each volunteer was given a unique ID, between 1 and 30. This column identifies which volunteer that data points in this row apply towards
@@ -354,4 +356,3 @@ AverageAngleBetweenYAndGravityMean
 AverageAngleBetweenZAndGravityMean
 	Decimal value normalized and bounded within [-1,1]
 	Average of all observations of corresponding feature for the given volunteer and for the specified activity.
-	
