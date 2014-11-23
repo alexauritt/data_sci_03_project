@@ -23,16 +23,14 @@ and a full desription of the data can be found here:
 
 <ol>
 	<li>
-		Merge training and test sets to create one data set.
-		
-		Here is more info
+		<h4>Merge training and test sets to create one data set.</h4>
 	</li>
-	##And more info here.
+	<p>Script begins by reading in all necessary files, which include the feature data for training and test sets ('train/subject\_training' and 'test/subject\_test.txt'), as well as subject id lists (e.g. 'test/subject\_test.txt') and activity id lists (e.g. 'test/y\_test.txt'), as well as the list of activity labels ('activity\_labels.txt').</p>
+	<p>Training and Test Data (without the subject and activity info) will be composed of 
+	7252 x 561 and 2947 x 561 matrices, respectively, with each row a unique observation of each of the 561 features. These two matrices can therefore be combined, rowwise, into a 10199 x 561 matrix.</p>
 	<li>
-		Extract the measurements on the mean and standard deviation for each measurement.
-		
-		And more still
+		<h4>Extract the measurements on the mean and standard deviation for each measurement.</h4>
 	</li> 
-	<li>Use descriptive activity names to name activities in data set.</li>
+	<li><h4>Use descriptive activity names to name activities in data set.</h4></li>
 	<li>Label data set with descriptive variable names.</li>
 	<li>From the data set in step 4, create a 2nd, independent tidy data set with average of each variable for each activity and each subject.</li>
